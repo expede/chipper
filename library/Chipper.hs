@@ -10,6 +10,7 @@ module Chipper
        ( someFunc
        ) where
 
+import           RIO
 
 someFunc :: IO ()
-someFunc = putStrLn ("someFunc" :: String)
+someFunc = return ()

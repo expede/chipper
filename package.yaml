@@ -1,0 +1,134 @@
+name: chipper
+version: '0.0.1.0'
+category: Emulator
+author: Brooklyn Zelenka
+maintainer: hello@brooklynzelenka.com
+copyright: © 2020 Brooklyn Zelenka
+license: AGPL-3.0-or-later
+license-file: LICENSE
+github: fission-suite/fission
+tested-with: GHC==8.8.3
+extra-source-files:
+  - README.md
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Widentities
+  # Warn about too little
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wmissing-export-lists
+  - -Wpartial-fields
+  # Warn about too much
+  - -Wredundant-constraints
+  # Prettier Development
+  - -fhide-source-paths
+
+default-extensions:
+  - ApplicativeDo
+  - BangPatterns
+  - BinaryLiterals
+  - BlockArguments
+  - DerivingStrategies
+  - GeneralizedNewtypeDeriving
+  - LambdaCase
+  - NoImplicitPrelude
+  - NumericUnderscores
+  - OverloadedStrings
+  - RecordWildCards
+
+dependencies:
+  ## Base ##
+  - base
+  - rio
+  - rio-orphans
+
+  ## Capabilties ##
+  - monad-logger
+  - monad-time
+  - mtl
+  - unliftio
+
+  ## Data ##
+  - binary
+  - generic-lens
+  - lens
+  - world-peace
+
+  ## Error Handling ##
+  - exceptions
+  - rescue
+
+  ## Terminal ##
+  - brick
+  - optparse-applicative
+
+library:
+  source-dirs: library
+
+executables:
+  chipper:
+    main: Main.hs
+    source-dirs: app
+    dependencies:
+      - chipper
+    ghc-options:
+      - -threaded
+      - -flate-specialise
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -with-rtsopts=-T
+      - -optc-ffast-math
+      - -optc-O3
+      - -O2
+
+tests:
+  chipper-doctest:
+    main: Main.hs
+    source-dirs: doctest
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - directory
+      - directory-tree
+      - doctest
+      - Glob
+
+  chipper-test:
+    main: Main.hs
+    source-dirs:
+      - library
+      - test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - chipper
+      - hspec
+      - hspec-core
+      - hspec-expectations
+      - QuickCheck
+      - quickcheck-instances
+      - servant-quickcheck
+      - tasty
+      - tasty-hunit
+      - tasty-hspec
+      - tasty-smallcheck
+      - tasty-rerun
+
+benchmarks:
+  chipper-benchmark:
+    main: Main.hs
+    source-dirs: benchmark
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -O2
+    dependencies:
+      - chipper
+      - criterion
