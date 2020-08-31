@@ -53,6 +53,7 @@ dependencies:
   ## Data ##
   - binary
   - generic-lens
+  - membrain
   - lens
   - world-peace
 

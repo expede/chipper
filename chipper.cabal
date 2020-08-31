@@ -26,6 +26,8 @@ source-repository head
 library
   exposed-modules:
       Chipper
+      Chipper.Instruction
+      Chipper.ISA
   other-modules:
       Paths_chipper
   hs-source-dirs:
@@ -39,6 +41,7 @@ library
     , exceptions
     , generic-lens
     , lens
+    , membrain
     , monad-logger
     , monad-time
     , mtl
@@ -66,6 +69,7 @@ executable chipper
     , exceptions
     , generic-lens
     , lens
+    , membrain
     , monad-logger
     , monad-time
     , mtl
@@ -97,6 +101,7 @@ test-suite chipper-doctest
     , exceptions
     , generic-lens
     , lens
+    , membrain
     , monad-logger
     , monad-time
     , mtl
@@ -113,6 +118,8 @@ test-suite chipper-test
   main-is: Main.hs
   other-modules:
       Chipper
+      Chipper.Instruction
+      Chipper.ISA
       Spec
       Paths_chipper
   hs-source-dirs:
@@ -132,6 +139,7 @@ test-suite chipper-test
     , hspec-core
     , hspec-expectations
     , lens
+    , membrain
     , monad-logger
     , monad-time
     , mtl
@@ -168,6 +176,7 @@ benchmark chipper-benchmark
     , exceptions
     , generic-lens
     , lens
+    , membrain
     , monad-logger
     , monad-time
     , mtl
