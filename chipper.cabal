@@ -26,31 +26,50 @@ source-repository head
 library
   exposed-modules:
       Chipper
-      Chipper.Instruction
-      Chipper.ISA
+      Chipper.Config.Types
+      Chipper.Decimal.Class
+      Chipper.Delay.Timer.Class
+      Chipper.Delay.Timer.Types
+      Chipper.Delay.Types
+      Chipper.Game.Control.Class
+      Chipper.Game.Types
+      Chipper.Keyboard.Class
+      Chipper.Keyboard.Types
+      Chipper.Prelude
+      Chipper.RAM.Address.Buffer.Class
+      Chipper.RAM.Address.Types
+      Chipper.RAM.Class
+      Chipper.RAM.Types
+      Chipper.Raw.Machine.Class
+      Chipper.Register.Class
+      Chipper.Register.Types
+      Chipper.Screen.Buffer.Types
+      Chipper.Screen.Class
+      Chipper.Screen.Resolution.Types
+      Chipper.Screen.Types
+      Chipper.Sound.Timer.Class
+      Chipper.Sound.Timer.Types
+      Chipper.Sound.Types
+      Chipper.Subroutine.Class
+      Chipper.Subroutine.Stack.Types
+      Chipper.Subroutine.Types
+      Chipper.Types
   other-modules:
       Paths_chipper
   hs-source-dirs:
       library
-  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
+  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DataKinds DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wpartial-fields -Wredundant-constraints -fhide-source-paths
   build-depends:
       base
     , binary
     , brick
-    , exceptions
-    , generic-lens
-    , lens
     , membrain
     , monad-logger
     , monad-time
     , mtl
     , optparse-applicative
-    , rescue
     , rio
-    , rio-orphans
-    , unliftio
-    , world-peace
   default-language: Haskell2010
 
 executable chipper
@@ -59,26 +78,19 @@ executable chipper
       Paths_chipper
   hs-source-dirs:
       app
-  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
+  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DataKinds DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wpartial-fields -Wredundant-constraints -fhide-source-paths -threaded -flate-specialise -rtsopts -with-rtsopts=-N -with-rtsopts=-T -optc-ffast-math -optc-O3 -O2
   build-depends:
       base
     , binary
     , brick
     , chipper
-    , exceptions
-    , generic-lens
-    , lens
     , membrain
     , monad-logger
     , monad-time
     , mtl
     , optparse-applicative
-    , rescue
     , rio
-    , rio-orphans
-    , unliftio
-    , world-peace
   default-language: Haskell2010
 
 test-suite chipper-doctest
@@ -88,7 +100,7 @@ test-suite chipper-doctest
       Paths_chipper
   hs-source-dirs:
       doctest
-  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
+  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DataKinds DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wpartial-fields -Wredundant-constraints -fhide-source-paths -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       Glob
@@ -98,19 +110,12 @@ test-suite chipper-doctest
     , directory
     , directory-tree
     , doctest
-    , exceptions
-    , generic-lens
-    , lens
     , membrain
     , monad-logger
     , monad-time
     , mtl
     , optparse-applicative
-    , rescue
     , rio
-    , rio-orphans
-    , unliftio
-    , world-peace
   default-language: Haskell2010
 
 test-suite chipper-test
@@ -118,14 +123,40 @@ test-suite chipper-test
   main-is: Main.hs
   other-modules:
       Chipper
-      Chipper.Instruction
-      Chipper.ISA
+      Chipper.Config.Types
+      Chipper.Decimal.Class
+      Chipper.Delay.Timer.Class
+      Chipper.Delay.Timer.Types
+      Chipper.Delay.Types
+      Chipper.Game.Control.Class
+      Chipper.Game.Types
+      Chipper.Keyboard.Class
+      Chipper.Keyboard.Types
+      Chipper.Prelude
+      Chipper.RAM.Address.Buffer.Class
+      Chipper.RAM.Address.Types
+      Chipper.RAM.Class
+      Chipper.RAM.Types
+      Chipper.Raw.Machine.Class
+      Chipper.Register.Class
+      Chipper.Register.Types
+      Chipper.Screen.Buffer.Types
+      Chipper.Screen.Class
+      Chipper.Screen.Resolution.Types
+      Chipper.Screen.Types
+      Chipper.Sound.Timer.Class
+      Chipper.Sound.Timer.Types
+      Chipper.Sound.Types
+      Chipper.Subroutine.Class
+      Chipper.Subroutine.Stack.Types
+      Chipper.Subroutine.Types
+      Chipper.Types
       Spec
       Paths_chipper
   hs-source-dirs:
       library
       test
-  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
+  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DataKinds DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wpartial-fields -Wredundant-constraints -fhide-source-paths -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       QuickCheck
@@ -133,29 +164,22 @@ test-suite chipper-test
     , binary
     , brick
     , chipper
-    , exceptions
-    , generic-lens
     , hspec
     , hspec-core
     , hspec-expectations
-    , lens
     , membrain
     , monad-logger
     , monad-time
     , mtl
     , optparse-applicative
     , quickcheck-instances
-    , rescue
     , rio
-    , rio-orphans
     , servant-quickcheck
     , tasty
     , tasty-hspec
     , tasty-hunit
     , tasty-rerun
     , tasty-smallcheck
-    , unliftio
-    , world-peace
   default-language: Haskell2010
 
 benchmark chipper-benchmark
@@ -165,7 +189,7 @@ benchmark chipper-benchmark
       Paths_chipper
   hs-source-dirs:
       benchmark
-  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
+  default-extensions: ApplicativeDo BangPatterns BinaryLiterals BlockArguments DataKinds DerivingStrategies GeneralizedNewtypeDeriving LambdaCase NoImplicitPrelude NumericUnderscores OverloadedStrings RecordWildCards
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wpartial-fields -Wredundant-constraints -fhide-source-paths -threaded -rtsopts -with-rtsopts=-N -O2
   build-depends:
       base
@@ -173,17 +197,10 @@ benchmark chipper-benchmark
     , brick
     , chipper
     , criterion
-    , exceptions
-    , generic-lens
-    , lens
     , membrain
     , monad-logger
     , monad-time
     , mtl
     , optparse-applicative
-    , rescue
     , rio
-    , rio-orphans
-    , unliftio
-    , world-peace
   default-language: Haskell2010

@@ -1,3 +1,0 @@
--- |
-
-module Chipper.ISA where

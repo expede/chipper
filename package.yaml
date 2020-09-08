@@ -15,13 +15,16 @@ ghc-options:
   - -Wall
   - -Wcompat
   - -Widentities
+
   # Warn about too little
   - -Wincomplete-record-updates
   - -Wincomplete-uni-patterns
   - -Wmissing-export-lists
   - -Wpartial-fields
+
   # Warn about too much
   - -Wredundant-constraints
+
   # Prettier Development
   - -fhide-source-paths
 
@@ -30,6 +33,7 @@ default-extensions:
   - BangPatterns
   - BinaryLiterals
   - BlockArguments
+  - DataKinds
   - DerivingStrategies
   - GeneralizedNewtypeDeriving
   - LambdaCase
@@ -42,24 +46,15 @@ dependencies:
   ## Base ##
   - base
   - rio
-  - rio-orphans
 
   ## Capabilties ##
   - monad-logger
   - monad-time
   - mtl
-  - unliftio
 
   ## Data ##
   - binary
-  - generic-lens
   - membrain
-  - lens
-  - world-peace
-
-  ## Error Handling ##
-  - exceptions
-  - rescue
 
   ## Terminal ##
   - brick
